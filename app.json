@@ -1,0 +1,45 @@
+{
+  "id": "f2a4b268-8ec7-42ef-b19c-4383d5035cad",
+  "name": "ProgressBar",
+  "publisher": "Marcus Fabian",
+  "version": "20.0.0.0",
+  "brief": "Progress Bar",
+  "description": "Progress Bar remaining time",
+  "privacyStatement": "",
+  "EULA": "",
+  "help": "",
+  "url": "",
+  "logo": "",
+  "dependencies": [],
+  "screenshots": [],
+  "platform": "20.0.0.0",
+  "application": "20.0.0.0",
+  "idRanges": [
+    {
+      "from": 50900,
+      "to": 50900
+    }
+  ],
+  "contextSensitiveHelpUrl": "https://github.com/MarcusFabian/ProgressBar#readme",
+  "features": [
+    "TranslationFile",
+    "GenerateCaptions"
+  ],
+  "supportedLocales": [
+    "en-US",
+    "de-CH",
+    "de-DE",
+    "it-CH",
+    "it-IT",
+    "fr-CH",
+    "fr-FR",
+    "es-ES"
+  ],
+  "resourceExposurePolicy": {
+    "allowDebugging": true,
+    "allowDownloadingSource": true,
+    "includeSourceInSymbolFile": true
+  },
+  "target": "Cloud",
+  "runtime": "9.0"
+}
