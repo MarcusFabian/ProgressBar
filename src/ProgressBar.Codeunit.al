@@ -5,9 +5,7 @@ codeunit 50900 "ProgressBar"
         Handled: Boolean;
     begin
         OnBeforeWindowOpen(WindowContent, WithRemainingTime, Handled);
-
         DoWindowOpen(WindowContent, WithRemainingTime, Handled);
-
         OnAfterWindowOpen(WindowContent, WithRemainingTime);
     end;
 
@@ -19,9 +17,9 @@ codeunit 50900 "ProgressBar"
         IF NOT GUIALLOWED THEN
             EXIT;
         IF WithRemainingTime THEN
-            Window.OPEN(WindowContent + RemainingLbl)
+            Window.OPEN(WindowContent + ' #2#' + RemainingLbl)
         ELSE
-            Window.OPEN(WindowContent);
+            Window.OPEN(WindowContent + ' #2#');
         WindowLastUpdated := CURRENTDATETIME;
         DateTimeStart := WindowLastUpdated;
         DateTimeDifference := 0;
@@ -36,6 +34,7 @@ codeunit 50900 "ProgressBar"
         IF NOT DialogIsOpen THEN
             EXIT;
         Window.UPDATE(WindowIndex, UpdateText);
+        WindowProcess(2);
     end;
 
     procedure WindowClose();
@@ -58,22 +57,29 @@ codeunit 50900 "ProgressBar"
 
     procedure WindowProcess(WindowIndex: Integer);
     var
-        iPercent: Integer;
+        iPercent: Decimal;
         DateTimeEnd: DateTime;
+        PercentText: Text;
+        perCentLen: Integer;
+        LastChar: Text[4];
     begin
         IF NOT GUIALLOWED THEN
             EXIT;
         Counter[WindowIndex] := Counter[WindowIndex] + 1;
         IF NOT DialogIsOpen THEN
             EXIT;
+        LastChar := '|/-\';
 
         // >> Added for remaining time
-        iPercent := ROUND(Counter[WindowIndex] / Total[WindowIndex] * 10000, 1, '<');
         DateTimeDifference := ROUND((CURRENTDATETIME - DateTimeStart) * (Total[WindowIndex] / Counter[WindowIndex]), 1, '<');
         DateTimeEnd := DateTimeStart + DateTimeDifference;
         DateTimeDifference := ROUNDDATETIME(DateTimeEnd, 1000) - ROUNDDATETIME(CURRENTDATETIME, 1000);  // No Milliseconds
         IF (CURRENTDATETIME - WindowLastUpdated) > 100 THEN BEGIN
-            Window.UPDATE(WindowIndex, iPercent);
+            iPercent := Counter[WindowIndex] * 100 / Total[WindowIndex];
+            perCentLen := Round(StrLen(TimeBar) * iPercent / 100, 1) + 1; // Number of Characters in TimeBar
+            PercentText := CopyStr(TimeBar, 1, perCentLen) + CopyStr(EmptyTimeBar, perCentLen);
+            PercentText[perCentLen] := LastChar[Counter[WindowIndex] Mod 4 + 1];
+            Window.UPDATE(WindowIndex, Percenttext);
             WindowLastUpdated := CURRENTDATETIME;
             IF AddedRemainingTime THEN
                 Window.UPDATE(9, DateTimeDifference);
@@ -95,7 +101,13 @@ codeunit 50900 "ProgressBar"
 
     var
         // dlgRemaining: TextConst ENU = '\Remaining Time: #9##########';
-        RemainingLbl: Label '\Remaining Time: #9##########', Comment = '#1 = Remaining Time in hours minutes seconds';
+        TimeBar: Label '******************************';
+        EmptyTimeBar: Label '______________________________';
+        RemainingLbl: Label 'Remaining Time: #9##########',
+          //          Comment = 'DES="Verbleibende Zeit: #9##########",DEU="Verbleibende Zeit: #9##########"';
+          Comment = 'DEU="Verbleibende Zeit: #9##########",FRA="Temps restant",ITA="Tempo rimanente",ESP="Tiempo restante",DAN="Resterende tid",SWE="Återstående tid"';
+
+
 
 
         Window: Dialog;

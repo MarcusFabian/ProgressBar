@@ -2,7 +2,7 @@
   "id": "f2a4b268-8ec7-42ef-b19c-4383d5035cad",
   "name": "ProgressBar",
   "publisher": "Marcus Fabian",
-  "version": "20.0.0.0",
+  "version": "20.0.0.1",
   "brief": "Progress Bar",
   "description": "Progress Bar remaining time",
   "privacyStatement": "",
@@ -27,11 +27,8 @@
   ],
   "supportedLocales": [
     "en-US",
-    "de-CH",
     "de-DE",
-    "it-CH",
     "it-IT",
-    "fr-CH",
     "fr-FR",
     "es-ES"
   ],
