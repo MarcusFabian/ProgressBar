@@ -76,6 +76,8 @@ codeunit 50900 "ProgressBar"
         DateTimeDifference := ROUNDDATETIME(DateTimeEnd, 1000) - ROUNDDATETIME(CURRENTDATETIME, 1000);  // No Milliseconds
         IF (CURRENTDATETIME - WindowLastUpdated) > 100 THEN BEGIN
             iPercent := Counter[WindowIndex] * 100 / Total[WindowIndex];
+            if iPercent > 100.0 then
+                iPercent := 100.0;
             perCentLen := Round(StrLen(TimeBar) * iPercent / 100, 1) + 1; // Number of Characters in TimeBar
             PercentText := CopyStr(TimeBar, 1, perCentLen) + CopyStr(EmptyTimeBar, perCentLen);
             PercentText[perCentLen] := LastChar[Counter[WindowIndex] Mod 4 + 1];

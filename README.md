@@ -28,3 +28,6 @@ Therefore it is simulated and looks something like this:
  51% would be like:  ********/________
  87% like            *************\___
   
+# Changes
+## V20.0.0.2
+Failed if Counter>Norecs and therefore "percent completed" > 100.0%
