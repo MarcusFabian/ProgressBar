@@ -106,9 +106,7 @@ codeunit 50900 "ProgressBar"
         TimeBar: Label '******************************';
         EmptyTimeBar: Label '______________________________';
         RemainingLbl: Label 'Remaining Time: #9##########',
-          //          Comment = 'DES="Verbleibende Zeit: #9##########",DEU="Verbleibende Zeit: #9##########"';
-          Comment = 'DEU="Verbleibende Zeit: #9##########",FRA="Temps restant",ITA="Tempo rimanente",ESP="Tiempo restante",DAN="Resterende tid",SWE="Återstående tid"';
-
+        Comment = 'DES="Verbleibende Zeit: #9##########",DEU="Verbleibende Zeit: #9##########",FRA="Temps restant",ITA="Tempo rimanente",ESP="Tiempo restante",DAN="Resterende tid",SWE="Återstående tid"';
 
 
 
