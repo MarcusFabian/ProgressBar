@@ -31,3 +31,7 @@ Therefore it is simulated and looks something like this:
 # Changes
 ## V20.0.0.2
 Failed if Counter>Norecs and therefore "percent completed" > 100.0%
+
+## V21.1.0.2
+Added Translations
+
