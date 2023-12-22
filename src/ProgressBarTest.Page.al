@@ -1,3 +1,5 @@
+namespace Fabian.Tools;
+
 page 50900 ProgressBar_Test
 {
     Caption = 'ProgressBar_Test';
