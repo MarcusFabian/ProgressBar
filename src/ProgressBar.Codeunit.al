@@ -1,3 +1,4 @@
+namespace Fabian.Tools;
 codeunit 50900 "ProgressBar"
 {
     procedure WindowOpen(WindowContent: Text; WithRemainingTime: Boolean);

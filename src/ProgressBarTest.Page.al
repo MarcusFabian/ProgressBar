@@ -1,8 +1,13 @@
+namespace Fabian.Tools;
+
+using System.Utilities;
+
 page 50900 ProgressBar_Test
 {
     Caption = 'ProgressBar_Test';
     PageType = Card;
     SourceTable = "Integer";
+    UsageCategory = None;
 
     layout
     {
